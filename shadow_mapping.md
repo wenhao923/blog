@@ -20,7 +20,7 @@
 1. **获取 $\lbrace Depth(p), A(p) \wedge p\in Scene \rbrace$ ：保存场景中所有能够被照的点的深度(制作shadow map)**
 2. **遍历 $\lbrace p,B(p) \wedge p\in Scene \rbrace$，判断 $p$ 是否满足 $B(p)$**
    
-![GAMES202\01.PNG](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/01.PNG)
+![GAMES202\01.PNG](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/01.PNG)#pic_center
 
 ### 制作shadow map
 
@@ -53,11 +53,11 @@
 
 ### 走样
 算法“判断阴影”是在shading point的阶段，与point着色直接相关。所以在这一步研究。
-![frustum](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/frustum.png)
+![frustum](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/frustum.png)#pic_center
 
 在做第一步Ray Casting时，我们从相机处连接fragment。两点确定一条直线，相机的三维坐标位置无疑时固定的，但fragment的三维坐标是什么呢？如图可见，其实观察平面(射线的另一个点)就是**近平面**，所有点的深度值固定为$z_{near}$,而$(x,y)$是栅格化后的fragment从**屏幕空间**坐标映射回**裁剪空间**，一个fragment只映射回了一个三维坐标点，**但整个fragment映射回去有无穷个点**。(一般用fragment中心代表整个fragment)显然这是由于计算机的**离散化**导致**采样不足**导致的问题。
 
-![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/aliasing.png)
+![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/aliasing.png)#pic_center
 
 ### 自遮挡
 现在把目光移到二、三步计算$z - SM(x,y)$，这步存在问题么？$z$的获取没有问题(虽然在采样fragment坐标存在问题)；
@@ -67,7 +67,7 @@
 2. $(x,y)$：坐标位置正确吗？
 
 #### $SM$
-![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/rasterization.png)
+![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/rasterization.png)#pic_center
 
 shadow map是由**光栅化**得到的。观察上图，那么光栅化必然带来**走样**的问题，我们采样得来的深度代表了整个fragment的深度。那么shadow map表达的深度含义，其实是下图中的绿色方块，使用近平面上的黄点的深度代表了整个fragment的深度。
 ![self_occupied](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/occupied.png)
@@ -76,7 +76,7 @@ shadow map是由**光栅化**得到的。观察上图，那么光栅化必然带
 
 于是，自遮挡导致了frack：
 
-![self_occupied](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/selfoc.png)
+![self_occupied](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/selfoc.png)#pic_center
 >其实，$SM$和$(x,y)$是一体两面的问题。制作shadow map时采样不足，导致**重投影**后采不到正确的深度。
 
 ## 优化
