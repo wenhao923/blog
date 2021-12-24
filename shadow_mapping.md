@@ -76,7 +76,7 @@ shadow map是由**光栅化**得到的。观察上图，那么光栅化必然带
 
 于是，自遮挡导致了frack：
 
-![self_occupied](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/occupied.png)
+![self_occupied](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/selfoc.png)
 >其实，$SM$和$(x,y)$是一体两面的问题。制作shadow map时采样不足，导致**重投影**后采不到正确的深度。
 
 ## 优化
