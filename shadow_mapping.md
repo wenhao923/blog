@@ -28,7 +28,7 @@
 - 在光源位置，模拟放置一个camera：对场景object进行**坐标变换**；**设置**near,far,fov的参数
 - 对光源这个“相机”看到的场景**光栅化**，那么我们得到了一张光源视角的渲染图$SM$(shadowmap)，我们不需要每个像素的RGB信息，我们只需要每个像素的深度。这样就完成了算法的**第一步**。
 > 现在拥有了对应像素的对应深度 $SM(x,y)$
-<div style="align: center">
+<div align=center>
 <img src='https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/shadow_map.png'/>
 </div>
 
@@ -40,7 +40,7 @@
 - 如果point处在阴影，我们简单的把**判断阴影**中的第一步中的fragment颜色设为0，表示阴影。这就完成了算法的**第二步**。
 > 光源被挡住和简单设置为0值得注意。在Soft shadow中会对这些地方更进一步地探索。
 
-<div style="align: center">
+<div align=center>
 <img src='https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/scene.png'/>
 </div>
 
@@ -57,7 +57,7 @@
 
 在做第一步Ray Casting时，我们从相机处连接fragment。两点确定一条直线，相机的三维坐标位置无疑时固定的，但fragment的三维坐标是什么呢？如图可见，其实观察平面(射线的另一个点)就是**近平面**，所有点的深度值固定为$z_{near}$,而$(x,y)$是栅格化后的fragment从**屏幕空间**坐标映射回**裁剪空间**，一个fragment只映射回了一个三维坐标点，**但整个fragment映射回去有无穷个点**。(一般用fragment中心代表整个fragment)显然这是由于计算机的**离散化**导致**采样不足**导致的问题。
 
-![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/aliasing.png)#pic_center
+![aliasing](https://github.com/wenhao923/blog/blob/main/pictures/GAMES202/aliasing.png)
 
 ### 自遮挡
 现在把目光移到二、三步计算$z - SM(x,y)$，这步存在问题么？$z$的获取没有问题(虽然在采样fragment坐标存在问题)；
