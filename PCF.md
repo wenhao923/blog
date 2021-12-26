@@ -115,7 +115,7 @@ PCSS的流程可分为三步：
 $$ABD(p)\rightarrow W_p\rightarrow bias/size\rightarrow Visilty(p)$$
 
 ## Reference
-[](https://www.bilibili.com/video/BV11a4y1s7Cy)
+[1](https://www.bilibili.com/video/BV11a4y1s7Cy)
 
-[](https://zhuanlan.zhihu.com/p/359377010)
+[2](https://zhuanlan.zhihu.com/p/359377010)
 
